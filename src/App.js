@@ -1,7 +1,7 @@
 import './App.css';
 import Card from "./components/Card";
 import {useState} from "react";
-import {generateCard} from "./unils/card-generator";
+import {generateCard} from "./utils/card-generator";
 
 const initialCard = generateCard();
 
