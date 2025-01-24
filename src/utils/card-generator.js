@@ -11,12 +11,16 @@ export function generateCard() {
     let numberCounter = ROW_NUMBERED_CELLS;
 
     while (numberCounter > 0) {
-      const randomNumber = getRandomNumber(generatedNumbers);
+      const randomNumber = Math.ceil(Math.random() * 90);
+      if (generatedNumbers.has(randomNumber)) {
+        continue;
+      }
+
       generatedNumbers.add(randomNumber);
       const index = Math.floor(Math.random() * ROW_CELLS);
 
-      const cell = rows[index];
-      if (!cell) {
+      const value = rows[index];
+      if (!value) {
         rows[index] = randomNumber;
         numberCounter--;
       }
@@ -26,14 +30,6 @@ export function generateCard() {
   }
 
   return card;
-}
-
-function getRandomNumber(generatedNumbers) {
-  const randomNumber = Math.ceil(Math.random() * 90);
-  if (generatedNumbers.has(randomNumber)) {
-    return getRandomNumber(generatedNumbers);
-  }
-  return randomNumber;
 }
 
 // [
