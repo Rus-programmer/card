@@ -1,26 +1,26 @@
 const ROW_CELLS = 9;
 const COLUMN_CELLS = 3;
 const ROW_NUMBERED_CELLS = 5;
+const MAX_NUMBER = 90;
 
 export function generateCard() {
   const card = [];
   const generatedNumbers = new Set();
 
-  for (let i = 0; i < COLUMN_CELLS; i++) {
+  for (let col = 0; col < COLUMN_CELLS; col++) {
     const rows = Array.from({length: ROW_CELLS}, () => null);
     let numberCounter = ROW_NUMBERED_CELLS;
 
     while (numberCounter > 0) {
-      const randomNumber = Math.ceil(Math.random() * 90);
+      const randomNumber = Math.ceil(Math.random() * MAX_NUMBER);
       if (generatedNumbers.has(randomNumber)) {
         continue;
       }
 
-      generatedNumbers.add(randomNumber);
-      const index = Math.floor(Math.random() * ROW_CELLS);
-
+      const index = Math.floor((randomNumber === MAX_NUMBER ? randomNumber - 1 : randomNumber) / 10);
       const value = rows[index];
       if (!value) {
+        generatedNumbers.add(randomNumber);
         rows[index] = randomNumber;
         numberCounter--;
       }
