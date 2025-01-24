@@ -7,7 +7,7 @@ export function generateCard() {
   const card = [];
   const generatedNumbers = new Set();
 
-  for (let col = 0; col < COLUMN_CELLS; col++) {
+  for (let row = 0; row < COLUMN_CELLS; row++) {
     const rows = Array.from({length: ROW_CELLS}, () => null);
     let numberCounter = ROW_NUMBERED_CELLS;
 
